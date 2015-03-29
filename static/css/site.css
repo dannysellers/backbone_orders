@@ -1,0 +1,102 @@
+html {
+    position   : relative;
+    min-height : 100%;
+}
+
+body {
+    /* Footer height is 60 px */
+    margin-bottom : 75px;
+}
+
+body > .container {
+    padding : 65px 15px 0;
+}
+
+.container .text-muted {
+    margin : 20px 0;
+}
+
+.footer {
+    /* Footer sticky to bottom of page */
+    /*position         : absolute;*/
+    /*bottom           : 0;*/
+    /*width            : 100%;*/
+
+    /* Footer sticky to bottom of screen */
+    position         : fixed;
+    bottom           : 0;
+    left             : 0;
+    right            : 0;
+    height           : 60px;
+    background-color : #f5f5f5;
+}
+
+.header {
+    padding-left  : 15px;
+    padding-right : 15px;
+}
+
+.jumbotron {
+    border-bottom : 1px solid #e5e5e5;
+    background    : rgba(238, 238, 238, 0.85);
+}
+
+div.well {
+    background : rgba(238, 238, 238, 0.85);
+}
+
+img.logo {
+    width : 75%;
+}
+
+.jumbotron .btn {
+    padding   : 14px 24px;
+    font-size : 18px;
+}
+
+.jumbotron p.sub-head {
+    color       : #08486B;
+    font-family : 'PT Sans', sans-serif;
+    font-size   : 24px;
+}
+
+div.navbar-header > a.disabled.navbar-brand:hover {
+    color  : #9d9d9d;
+    cursor : default;
+}
+
+#address-link {
+    text-decoration : none;
+    color           : #777;
+}
+
+#address-link:hover {
+    color : #337ab7;
+}
+
+#spinner {
+    margin-top : 3px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width : 768px) {
+    /* Remove the padding we set earlier */
+    .header {
+        padding-right : 0;
+        padding-left  : 0;
+    }
+
+    /* Space out the masthead */
+    .header {
+        margin-bottom : 30px;
+    }
+
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom : 0;
+    }
+}
+
+dt {
+    font-size : medium;
+}

@@ -1,0 +1,133 @@
+<div class="row body">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="page-header">
+            <h2>Submit a new work order</h2>
+        </div>
+
+        <form class="form-horizontal" method="post" id="submit-order-form">
+
+            <div class="form-group">
+                <label for="inputAccount" class="col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-1 control-label">Account</label>
+
+                <div class="col-md-5 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <input type="text" class="form-control" id="inputAccount" placeholder="#<%= user.account.acct %>" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPhone"
+                       class="col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-1 control-label">Phone</label>
+
+                <div class="col-md-5 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <input type="number" class="form-control" id="inputPhone">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail"
+                       class="col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-1 control-label">Email</label>
+
+                <div class="col-md-5 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="<%= user.email %>">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputQuantity" class="col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-1 control-label">Quantity</label>
+
+                <div class="col-md-5 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <input type="number" class="form-control" id="inputQuantity">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDescription"
+                       class="col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-1 control-label">Description</label>
+
+                <div class="col-md-5 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <textarea id="inputDescription" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputTracking" class="col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-1 control-label">Tracking
+                    Info</label>
+
+                <div class="col-md-5 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <input type="text" class="form-control" id="inputTracking">
+                </div>
+            </div>
+
+                <span class="col-xs-offset-1">I require the following:<span>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="service-1" type="checkbox" value="">
+                            Service 1
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="service-2" type="checkbox" value="">
+                            Service 2
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="service-3" type="checkbox" value="">
+                            Service 3
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="service-4" type="checkbox" value="">
+                            Service 4
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="service-5" type="checkbox" value="">
+                            Service 5
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="service-6" type="checkbox" value="">
+                            Service 6
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="service-7" type="checkbox" value="">
+                            Service 7
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="col-xs-offset-1 control-label">
+                            <input id="misc-services" type="checkbox" value="">
+                            Misc. service (please provide further details)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputMisc" class="col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-1 control-label">Further
+                        details</label>
+
+                    <div class="col-md-5 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                        <textarea id="inputMisc" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-11 col-xs-offset-1">
+                    <p>Please note that by clicking Submit, you acknowledge that you have read, understood, and
+                        agree to all terms listed in the <a href="#">User Agreement</a>.</p>
+                    <button type="submit" class="btn btn-primary">Submit Order</button>
+                </div>
+        </form>
+
+        <div class="col-xs-12"><p id="return-message"></p></div>
+    </div>
+
+</div>

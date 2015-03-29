@@ -1,0 +1,183 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 col-xs-12">
+
+        <div class="page-header">
+            <h2>Account #<%= user.account.acct %></h2>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Account</th>
+                <th>Email</th>
+                <th>Date Opened</th>
+                <th>Stored Shipments</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><%= user.account.name %></td>
+                <td>#<%= user.account.acct %></td>
+                <td><%= user.email %></td>
+                <td><%= user.account.createdate %></td>
+                <td><%= user.account.shipments.length %></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <hr/>
+    </div>
+</div>
+
+<div role="tabpanel">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-xs-12">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#stored" id="stored-tab" role="tab" data-toggle="tab" aria-controls="stored"
+                       aria-expanded="true">Stored Shipments</a>
+                </li>
+                <li role="presentation">
+                    <a href="#past" id="past-tab" role="tab" data-toggle="tab" aria-controls="past"
+                       aria-expanded="false">Past Shipments</a>
+                </li>
+            </ul>
+            <br/>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <!-- Stored shipments -->
+        <div class="tab-pane active" role="tabpanel" id="stored">
+            <% _.each(storedShipments,function(shipment){ %>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-1 col-xs-12">
+
+                    <h4>Shipment <%= shipment.shipid %></h4>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Volume (ft^3)</th>
+                            <th>Incurring Fees</th>
+                            <th>Storage Fees</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(shipment.items,function(item){ %>
+                        <tr>
+                            <td><%= item.attributes.itemid %></td>
+                            <td><%= item.attributes.volume %></td>
+                            <% if(!item.attributes.incurring_fees){ %>
+                            <td>False</td>
+                            <% } else { %>
+                            <td>True</td>
+                            <% } %>
+                            <td>$<%= item.attributes.storage_fees %></td>
+                            <td><%= item.attributes.status %></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <p>Extras</p>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Unit Cost</th>
+                            <th>Total Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(shipment.extras,function(extra){ %>
+                        <tr>
+                            <td><%= extra.attributes.description %></td>
+                            <td><%= extra.attributes.quantity %></td>
+                            <td>$<%= extra.attributes.unit_cost %></td>
+                            <td>$<%= extra.attributes.total_cost %></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr/>
+            <% }); %>
+        </div>
+
+        <!-- Past Shipments -->
+        <div class="tab-pane" role="tabpanel" id="past">
+            <% _.each(pastShipments,function(shipment){ %>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-1 col-xs-12">
+
+                    <h4>Shipment <%= shipment.shipid %></h4>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Volume (ft^3)</th>
+                            <th>Incurring Fees</th>
+                            <th>Storage Fees</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(shipment.items,function(item){ %>
+                        <tr>
+                            <td><%= item.attributes.itemid %></td>
+                            <td><%= item.attributes.volume %></td>
+                            <% if(!item.attributes.incurring_fees){ %>
+                            <td>False</td>
+                            <% } else { %>
+                            <td>True</td>
+                            <% } %>
+                            <td>$<%= item.attributes.storage_fees %></td>
+                            <td><%= item.attributes.status %></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4 col-xs-12">
+
+                    <p>Extras</p>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Unit Cost</th>
+                            <th>Total Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(shipment.extras,function(extra){ %>
+                        <tr>
+                            <td><%= extra.attributes.description %></td>
+                            <td><%= extra.attributes.quantity %></td>
+                            <td>$<%= extra.attributes.unit_cost %></td>
+                            <td>$<%= extra.attributes.total_cost %></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr/>
+            <% }); %>
+        </div>
+    </div>
+</div>
