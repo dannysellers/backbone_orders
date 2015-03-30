@@ -69,13 +69,13 @@
                         <% _.each(shipment.items,function(item){ %>
                         <tr>
                             <td><%= item.attributes.itemid %></td>
-                            <td><%= item.attributes.volume %></td>
+                            <td><%= numLength(item.attributes.volume,2) %></td>
                             <% if(!item.attributes.incurring_fees){ %>
                             <td>False</td>
                             <% } else { %>
                             <td>True</td>
                             <% } %>
-                            <td>$<%= item.attributes.storage_fees %></td>
+                            <td>$<%= numLength(item.attributes.storage_fees,2) %></td>
                             <td><%= item.attributes.status %></td>
                         </tr>
                         <% }); %>
@@ -101,8 +101,8 @@
                         <tr>
                             <td><%= extra.attributes.description %></td>
                             <td><%= extra.attributes.quantity %></td>
-                            <td>$<%= extra.attributes.unit_cost %></td>
-                            <td>$<%= extra.attributes.total_cost %></td>
+                            <td>$<%= numLength(extra.attributes.unit_cost,2) %></td>
+                            <td>$<%= numLength(extra.attributes.total_cost,2) %></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -136,13 +136,13 @@
                         <% _.each(shipment.items,function(item){ %>
                         <tr>
                             <td><%= item.attributes.itemid %></td>
-                            <td><%= item.attributes.volume %></td>
+                            <td><%= numLength(item.attributes.volume,2) %></td>
                             <% if(!item.attributes.incurring_fees){ %>
                             <td>False</td>
                             <% } else { %>
                             <td>True</td>
                             <% } %>
-                            <td>$<%= item.attributes.storage_fees %></td>
+                            <td>$<%= numLength(item.attributes.storage_fees,2) %></td>
                             <td><%= item.attributes.status %></td>
                         </tr>
                         <% }); %>
@@ -166,8 +166,8 @@
                         <tr>
                             <td><%= extra.attributes.description %></td>
                             <td><%= extra.attributes.quantity %></td>
-                            <td>$<%= extra.attributes.unit_cost %></td>
-                            <td>$<%= extra.attributes.total_cost %></td>
+                            <td>$<%= numLength(extra.attributes.unit_cost,2) %></td>
+                            <td>$<%= numLength(extra.attributes.total_cost,2) %></td>
                         </tr>
                         <% }); %>
                         </tbody>
