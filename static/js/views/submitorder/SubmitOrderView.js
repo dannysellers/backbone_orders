@@ -37,9 +37,10 @@ define([
             //outputElement.removeAttr('style');
 
             // Form elements
-            var acct = $("#inputAccount").val().toLowerCase();
+            var acct = $("#inputAccount").prop('placeholder').split("#")[1];
             var phone = $("#inputPhone").val().toLowerCase();
-            var email = $("#inputEmail").val().toLowerCase();
+            var emailInput = $("#inputEmail");
+            var email = (emailInput.val() ? emailInput.val() : emailInput.prop('placeholder'));
             var quantity = $("#inputQuantity").val().toLowerCase();
             var description = $("#inputDescription").val();
             var tracking = $("#inputTracking").val();

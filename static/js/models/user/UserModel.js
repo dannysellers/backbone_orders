@@ -20,8 +20,6 @@ define([
         },
 
         // Attrs should include:
-        // URL ('/customers/' + self.acct)
-        // getShipmentById(shipid)
         // generateShipInvoice(shipid)
         // generateBillingSummary(dateStart, dateEnd)
 

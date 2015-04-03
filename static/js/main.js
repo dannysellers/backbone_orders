@@ -19,7 +19,7 @@ require([
     app.router = new AppRouter({});
 
     // Start routing.
-    Backbone.history.start({root: app.root});
+    Backbone.history.start({ root: app.root });
 
     //Backbone.Model.prototype.toJSON = function () {
     //    // Fix to make Backbone's toJSON method recursive

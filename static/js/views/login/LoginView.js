@@ -3,30 +3,42 @@
  */
 define([
     'app',
-    'models/session/SessionModel',
     'text!templates/login/loginTemplate.html'
-], function (app, SessionModel, loginTemplate) {
+], function (app, loginTemplate) {
 
     var LoginView = Backbone.View.extend({
         el: $(".page"),
 
         initialize: function () {
-            _.bindAll(this, 'render', 'login', 'onPasswordKeyup');
+            _.bindAll(this, 'render', 'onLoginAttempt', 'onPasswordKeyup');
         },
 
         events: {
-            'click #loginButton': 'login'
+            'click #loginButton': 'onLoginAttempt'
         },
 
-        login: function (evt) {
-            if ( evt ) evt.preventDefault(); // Prevent the button from submitting the form
-            $('.alert-error').hide(); // Hide all errors on a new submit
-            console.log("Logging in...");
+        onLoginAttempt: function (evt) {
+            if ( evt ) evt.preventDefault();
 
-            var login = $("#inputEmail").val();
-            var password = $("#inputPassword").val();
-
-            app.session.login(login, password);
+            var btn = $("#loginButton");
+            btn.attr('disabled', true);
+            btn.html("Authenticating...");
+            var resElement = $("#login-response");
+            app.session.login({
+                username: $("#inputEmail").val(),
+                password: $("#inputPassword").val()
+            }, {
+                success: function (res) {
+                    if ( DEBUG ) console.log("Logged in successfully", res);
+                },
+                error: function (jqXHR, textStatus) {
+                    if ( DEBUG ) console.log("Login error: ", textStatus);
+                    btn.html('Sign In');
+                    btn.attr('disabled', false);
+                    resElement.html(textStatus.toString()).show();
+                }
+                // TODO: Error logging / notification
+            });
 
             ////////////////
             //if ( evt ) evt.preventDefault();
@@ -67,6 +79,7 @@ define([
         render: function () {
             console.log("Rendering login view...");
             this.$el.html(loginTemplate);
+            $("#login-response").hide();
         }
     });
 
