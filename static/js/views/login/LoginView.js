@@ -32,10 +32,10 @@ define([
                     if ( DEBUG ) console.log("Logged in successfully", res);
                 },
                 error: function (jqXHR, textStatus) {
-                    if ( DEBUG ) console.log("Login error: ", textStatus);
+                    if ( DEBUG ) console.log("Login error: ", jqXHR.responseJSON.non_field_errors);
                     btn.html('Sign In');
                     btn.attr('disabled', false);
-                    resElement.html(textStatus.toString()).show();
+                    resElement.html(jqXHR.responseJSON.non_field_errors.toString()).show();
                 }
                 // TODO: Error logging / notification
             });
@@ -77,7 +77,7 @@ define([
         },
 
         render: function () {
-            console.log("Rendering login view...");
+            if ( DEBUG ) console.log("Rendering login view...");
             this.$el.html(loginTemplate);
             $("#login-response").hide();
         }

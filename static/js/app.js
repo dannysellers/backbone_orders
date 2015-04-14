@@ -11,7 +11,8 @@ define([
 
     var App = {
         root: '/',          // The root path to run the app through
-        URL: '/~danny/gh/',  // Base application URL
+        //URL: '/~danny/gh/',  // Base application URL
+        URL: '/',
         API: '/api'         // Base API URL (used by models and collections)
     };
 

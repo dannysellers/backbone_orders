@@ -31,7 +31,7 @@ define([
         updateSessionUser: function (UserData, method) {
             this.user.set(_.pick(UserData, _.keys(this.user.defaults)));
             //if ( DEBUG ) console.log("Updating session user");
-            if ( DEBUG ) console.log([UserData]);
+            //if ( DEBUG ) console.log([UserData]);
             //$.cookie('auth_cookie', {
             //    auth_token: app.session.access_token,
             //    user_id: app.session.user_id
@@ -49,7 +49,7 @@ define([
             // after receiving an API response
             var self = this;
             var postData = _.omit(opts, 'method');
-            if ( DEBUG ) console.log(postData);
+            //if ( DEBUG ) console.log(postData);
             $.ajax({
                 url: this.url() + '/' + opts.method + '/',
                 contentType: 'application/json',
@@ -66,7 +66,7 @@ define([
                                 access_token: res.key
                             });
                             self.user.getInfo();
-                            Backbone.history.navigate("#/profile");
+                            Backbone.history.navigate("profile", { trigger: true });
                         } else {
                             self.set({ logged_in: false, access_token: null, user_id: null });
                         }

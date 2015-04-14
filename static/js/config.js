@@ -14,6 +14,7 @@ require.config({
         'backbone': 'libs/backbone/backbone',
         'bootstrap': '../vendor/bootstrap/js/bootstrap',
         'text': 'text',
+        //'parsley': 'libs/parsley/parsley',
         templates: '../../templates'
     },
 
@@ -21,6 +22,7 @@ require.config({
     shim: {
         'bootstrap': { deps: ['jquery'], exports: 'Bootstrap' },
         'jqcookie': { deps: ['jquery'], exports: 'Cookie' }
+        //'parsley': { deps: ['jquery'] }
     }
 });
 
@@ -36,13 +38,13 @@ define('models/model_cookie',
             },
 
             fetch: function () {
-                console.log("===== FETCH FIRED LOADING LOCAL STORAGE ====");
+                if ( DEBUG ) console.log("===== FETCH FIRED LOADING LOCAL STORAGE ====");
                 //this.set(JSON.parse(localStorage.getItem(this.id)));
                 this.set(JSON.parse($.cookie(this.id)));
             },
 
             save: function (attributes) {
-                console.log("===== CHANGE FIRED SAVING LOCAL STORAGE ====");
+                if ( DEBUG ) console.log("===== CHANGE FIRED SAVING LOCAL STORAGE ====");
                 //localStorage.setItem(this.id, JSON.stringify(this.toJSON()));
                 $.cookie(
                     this.id,

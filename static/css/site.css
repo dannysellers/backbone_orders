@@ -55,9 +55,8 @@ img.logo {
 }
 
 .jumbotron p.sub-head {
-    color       : #08486B;
-    font-family : 'PT Sans', sans-serif;
-    font-size   : 24px;
+    color     : #08486B;
+    font-size : 24px;
 }
 
 div.navbar-header > a.disabled.navbar-brand:hover {
@@ -76,6 +75,14 @@ div.navbar-header > a.disabled.navbar-brand:hover {
 
 #spinner {
     margin-top : 3px;
+}
+
+#loginButton {
+    margin-bottom : 1rem;
+}
+
+#faq > div:nth-child(2) > h3:first-child {
+    margin-top : 0;
 }
 
 /* Responsive: Portrait tablets and up */

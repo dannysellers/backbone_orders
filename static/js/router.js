@@ -20,9 +20,7 @@ define([
     $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
         // This 'prefilter' directs all generated Ajax requests to a
         // specific non-localhost URL
-        // options.url = 'http://52.10.84.228/api' + options.url;
         options.url = 'http://127.0.0.1:8000/api' + options.url;
-        //options.headers = { 'X-Auth-Token': app.session.access_token };
     });
 
     var AppRouter = Backbone.Router.extend({

@@ -11,8 +11,12 @@ define([
         template: _.template(profileTemplate),
 
         initialize: function () {
-            _.bindAll(this, 'render', 'parseShipments', 'numLength');
+            _.bindAll(this, 'render', 'parseShipments', 'numLength'); //, 'getInvoice');
         },
+
+        //events: {
+        //    "click a.ship-invoice": "getInvoice"
+        //},
 
         render: function () {
 
@@ -35,12 +39,12 @@ define([
             return this;
         },
 
-        parseShipments: function(shipmentList) {
+        parseShipments: function (shipmentList) {
             var storedShipmentList = [];
             var pastShipmentList = [];
 
-            _.each(shipmentList.toJSON(), function(shipment) {
-                if (shipment.status != 'Shipped') {
+            _.each(shipmentList.toJSON(), function (shipment) {
+                if ( shipment.status != 'Shipped' ) {
                     storedShipmentList.push(shipment);
                 } else {
                     pastShipmentList.push(shipment);
@@ -50,26 +54,44 @@ define([
             return [storedShipmentList, pastShipmentList];
         },
 
-        numLength: function(val, length) {
+        numLength: function (val, length) {
             // Return value truncated to a specified length after the decimal.
-            if (!val) {
+            if ( !val ) {
                 return '0.00';
             } else {
                 var _length = parseInt(length);
                 var _string = val.toString().split('.');
                 // Make sure there's a number after the decimal
-                if (_string.length == 1){
+                if ( _string.length == 1 ) {
                     _string.push('00');
                 }
                 // Truncate it if necessary
-                if (_string[1].length == 1) {
+                if ( _string[1].length == 1 ) {
                     _string[1] = _string[1] + '0';
-                } else if (_string[1].length > 1) {
-                    _string[1] = _string[1].slice(0,2);
+                } else if ( _string[1].length > 1 ) {
+                    _string[1] = _string[1].slice(0, 2);
                 }
-                return _string[0] + '.' + _string[1].slice(0,_length);
+                return _string[0] + '.' + _string[1].slice(0, _length);
             }
         }
+
+        //getInvoice: function (evt) {
+        //    //if (DEBUG) console.log(evt);
+        //    var shipid = evt.currentTarget.id;
+        //
+        //    $.ajax({
+        //        url: '/invoice/' + shipid + '/',
+        //        type: 'GET',
+        //        success: function (data, textStatus, jqXHR) {
+        //            // TODO: Retrieve PDF (URL?) from API
+        //            if ( DEBUG ) console.log("Invoice retrieved successfully");
+        //        },
+        //        error: function (jqXHR, textStatus, errorThrown) {
+        //            if ( DEBUG ) console.log(jqXHR.responseJSON.detail);
+        //            if ( DEBUG ) console.log(errorThrown);
+        //        }
+        //    })
+        //}
     });
 
     return ProfileView;
